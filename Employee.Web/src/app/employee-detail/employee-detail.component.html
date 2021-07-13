@@ -1,0 +1,77 @@
+<div class="container" *ngIf="employee; else elseBlock_outer">
+    <div class="top-bar">
+        <span class="icon" (click)="toggleEditMode()">
+            <i class="fas fa-pencil-alt" *ngIf="!editMode; else elseBlock"></i>
+            <ng-template #elseBlock>
+                <i class="far fa-save" (click)="onSave()"></i>
+            </ng-template>
+        </span>
+        <span class="icon">
+            <i class="far fa-trash-alt"></i>
+        </span>
+    </div> 
+    <!-- (ngSubmit)="onSubmit()"  -->
+    <form ngForm [ngClass]="{'not-editable': !editMode}">
+        <div class="basic-info">
+            <div class="photo">1</div>
+            <input
+                name="name"
+                class="name"
+                [placeholder]="editMode ? 'Name' : ''"
+                [(ngModel)]="employee.name"
+                [readonly]="!editMode"
+            >
+            <input
+                name="title"
+                class="job"
+                [placeholder]="editMode ? 'Job' : ''"
+                [(ngModel)]="employee.job"
+                [readonly]="!editMode"
+            >
+        </div>
+
+        <div class="secondary-info">
+            <div class="input-container" >
+                <label for="motto">Motto</label>
+                <input
+                    name="motto"
+                    [(ngModel)]="employee.motto"
+                    [readonly]="!editMode"
+                >
+            </div>
+
+            <div class="input-container" >
+                <label for="hobby">Hobby</label>
+                <input
+                    name="hobby"
+                    [(ngModel)]="employee.hobbies"
+                    [readonly]="!editMode"
+                >
+            </div>
+
+            <div class="input-container" >
+                <label for="hometown">Hometown</label>
+                <input
+                    name="hometown"
+                    [(ngModel)]="employee.hometown"
+                    [readonly]="!editMode"
+                >
+            </div>
+            
+            <div class="input-container">
+                <label for="blog">Personal blog</label>
+                <input
+                    name="blog"
+                    class="link"
+                    [(ngModel)]="employee.blog"
+                    [readonly]="!editMode"
+                >
+            </div>
+        </div>
+    </form>
+</div>
+<ng-template #elseBlock_outer>
+    <div class="container--no-employee">
+        <p>Please select an Employee</p>
+    </div>
+</ng-template>

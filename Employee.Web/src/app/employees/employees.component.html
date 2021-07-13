@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="list">
+        <div class="list__header">
+            <h1>List of Employees</h1>
+            <span class="add-icon" (click)="onAdd()">
+                <i class="fas fa-plus"></i>
+            </span>
+        </div>
+        <div class="list__elements">
+            <app-employee-list-item 
+                *ngFor="let item of items$ | async" 
+                [employee]="item" 
+                (click)="onSelect(item.id)"
+                [class.selected]="item.id === selectedItemId">
+            </app-employee-list-item>
+        </div>
+    </div>
+    <div class="detail">
+        <app-employee-detail [employee]="selectedEmployee" (saveClicked)="save($event)"></app-employee-detail>
+    </div>
+</div>

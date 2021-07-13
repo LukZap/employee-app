@@ -1,0 +1,36 @@
+@import '_mixins';
+@import '_colors';
+
+:host(.selected) {
+	.container {
+		background-color: $primary-green;
+	}
+
+	& * {
+		color: $white;
+	}
+}
+
+h2 {
+	margin: 0;
+	margin-bottom: rem(10);
+}
+
+.container {
+	cursor: pointer;
+	user-select: none;
+	display: flex;
+	height: rem(75);
+	padding: 10px;
+}
+
+.photo {
+	width: rem(75);
+}
+
+.info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

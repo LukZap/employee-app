@@ -1,0 +1,29 @@
+@import '_mixins';
+@import '_colors';
+
+.container {
+	display: flex;
+	height: 100%;
+}
+
+.list {
+	flex: 2;
+	background-color: $background-gray;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 20px;
+	}
+}
+
+.add-icon {
+	font-size: rem(30);
+	cursor: pointer;
+	color: $primary-green;
+}
+
+.detail {
+	flex: 3;
+}

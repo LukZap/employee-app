@@ -1,0 +1,62 @@
+@import "_colors";
+@import "_mixins";
+
+body * {
+	box-sizing: border-box;
+	line-height: rem(21);
+}
+
+html,
+body {
+	margin: 0;
+	font-size: rem(16);
+	font-family: "Segoe UI", "Helvetica", sans-serif;
+	color: $text-gray;
+	min-height: 100vh;
+}
+
+h1 {
+	font-size: rem(24);
+}
+
+h2 {
+	font-size: rem(20);
+}
+
+h1,
+h2 {
+	font-weight: normal;
+	color: $text-dark-gray;
+}
+
+input,
+label {
+	&:focus {
+		outline: none;
+	}
+}
+
+label {
+	margin-left: 2px;
+}
+
+input {
+	font-weight: 500;
+	font-size: rem(16);
+	border: solid 2px $light-gray;
+	background-color: $background-gray;
+	padding: rem(2.8) rem(5);
+	// width: 100%;
+	display: inline-block;
+	color: $black;
+}
+
+.bold {
+	font-weight: 600;
+}
+
+.icon {
+	font-size: rem(20);
+	cursor: pointer;
+	color: $primary-green;
+}

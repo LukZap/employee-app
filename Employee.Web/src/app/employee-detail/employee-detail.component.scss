@@ -1,0 +1,100 @@
+@import '_mixins';
+@import '_colors';
+
+:host {
+	background-color: $white;
+	height: 100%;
+}
+
+.container {
+	padding: 15px;
+
+	&--no-employee {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		text-align: center;
+	}
+}
+
+.top-bar {
+	text-align: right;
+
+	& > .icon {
+		margin: 0 5px;
+	}
+}
+
+.basic-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px 0;
+}
+
+.secondary-info {
+	padding: 15px 0;
+
+	& > .input-container {
+		margin: 7px 0;
+	}
+}
+
+h2 {
+	margin: 0;
+	margin-bottom: rem(5);
+	color: $primary-green;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.not-editable {
+	input {
+		background-color: $white;
+		border-color: $white;
+		padding-left: 0;
+	}
+
+	.basic-info {
+		padding: 15px 0;
+
+		input {
+			text-align: center;
+			width: unset;
+		}
+	}
+
+	.name {
+		margin-bottom: -6px;
+		color: $primary-green;
+		font-size: rem(24);
+	}
+
+	.job {
+		color: $text-gray;
+		font-size: rem(16);
+	}
+
+	.link {
+		text-decoration: none;
+		color: $primary-green;
+		cursor: pointer;
+	}
+}
+
+.basic-info input {
+	width: 100%;
+}
+
+.name {
+	margin-bottom: 5px;
+	font-size: rem(22);
+}
+
+.job {
+	font-size: rem(15);
+}
