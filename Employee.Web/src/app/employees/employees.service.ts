@@ -30,6 +30,10 @@ export class EmployeeService {
 	}
 
 	public deleteEmployee(employeeId: number) {
+		if (employeeId === 0) {
+			return;
+		}
+
 		return this.http.delete<EmployeeDetails>(EmployeeService.employeeUrl, { params: { id: employeeId } });
 	}
 }

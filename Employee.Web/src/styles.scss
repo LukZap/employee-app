@@ -3,7 +3,7 @@
 
 body * {
 	box-sizing: border-box;
-	line-height: rem(21);
+	// line-height: rem(21);
 }
 
 html,
@@ -46,7 +46,6 @@ input {
 	border: solid 2px $light-gray;
 	background-color: $background-gray;
 	padding: rem(2.8) rem(5);
-	// width: 100%;
 	display: inline-block;
 	color: $black;
 }
