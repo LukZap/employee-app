@@ -10,7 +10,7 @@
             <i class="far fa-trash-alt" (click)="onDelete()"></i>
         </span>
     </div> 
-    <form ngForm [ngClass]="{'not-editable': !editMode}">
+    <form ngForm [ngClass]="{'not-editable': !editMode}" autocomplete="off">
         <div class="basic-info">
             <div class="photo">1</div>
             <input

@@ -7,6 +7,8 @@
 }
 
 .list {
+	max-width: 40%;
+	min-width: rem(350);
 	flex: 2;
 	background-color: $background-gray;
 

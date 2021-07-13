@@ -22,7 +22,7 @@ namespace Employee.Backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public EmployeeBasicViewModel Get(long id)
+        public EmployeeDetailsViewModel Get(long id)
         {
             return _employeeService.GetEmployee(id);
         }

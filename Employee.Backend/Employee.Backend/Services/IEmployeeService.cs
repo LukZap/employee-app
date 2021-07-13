@@ -6,7 +6,7 @@ namespace Employee.Backend.Services
     {
         EmployeeDetailsViewModel AddEmployee(EmployeeDetailsViewModel viewModel);
         void DeleteEmployee(long id);
-        EmployeeBasicViewModel GetEmployee(long id);
+        EmployeeDetailsViewModel GetEmployee(long id);
         IEnumerable<EmployeeBasicViewModel> GetEmployees();
         EmployeeDetailsViewModel UpdateEmployee(EmployeeDetailsViewModel viewModel);
     }

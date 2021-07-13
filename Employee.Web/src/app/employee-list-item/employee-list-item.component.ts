@@ -10,7 +10,8 @@ export class EmployeeListItemComponent {
 	@Input() public employee?: EmployeeListItem;
 	@Output() deleteClicked = new EventEmitter<number>();
 
-	onDelete() {
+	onDelete($event: any) {
+		$event.stopPropagation();
 		this.deleteClicked.emit(this.employee?.id);
 	}
 }

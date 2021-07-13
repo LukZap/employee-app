@@ -29,11 +29,11 @@ namespace Employee.Backend.Services
             return vm;
         }
 
-        public EmployeeBasicViewModel GetEmployee(long id)
+        public EmployeeDetailsViewModel GetEmployee(long id)
         {
             var employee = _employeeRepository.Get(id);
 
-            var vm = _mapper.Map<EmployeeBasicViewModel>(employee);
+            var vm = _mapper.Map<EmployeeDetailsViewModel>(employee);
             return vm;
         }
 
