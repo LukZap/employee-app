@@ -50,7 +50,7 @@ namespace Employee.Backend.Services
         {
             var employee = _employeeRepository.Get(viewModel.Id);
             _mapper.Map(viewModel, employee);
-            _employeeRepository.Update(employee); // moze po id
+            _employeeRepository.Update(employee);
 
             return _mapper.Map<EmployeeDetailsViewModel>(employee);
         }

@@ -11,11 +11,16 @@
                 *ngFor="let item of items$ | async" 
                 [employee]="item" 
                 (click)="onSelect(item.id)"
-                [class.selected]="item.id === selectedItemId">
+                [class.selected]="item.id === selectedItemId"
+                (deleteClicked)="delete($event)">
             </app-employee-list-item>
         </div>
     </div>
     <div class="detail">
-        <app-employee-detail [employee]="selectedEmployee" (saveClicked)="save($event)"></app-employee-detail>
+        <app-employee-detail 
+            [employee]="selectedEmployee" 
+            (saveClicked)="save($event)"
+            (deleteClicked)="delete($event)">
+        </app-employee-detail>
     </div>
 </div>

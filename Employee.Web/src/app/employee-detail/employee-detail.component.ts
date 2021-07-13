@@ -9,6 +9,7 @@ import { EmployeeDetails } from '../employees/models/employee-details.type';
 export class EmployeeDetailComponent {
 	@Input() employee?: EmployeeDetails;
 	@Output() saveClicked = new EventEmitter<EmployeeDetails>();
+	@Output() deleteClicked = new EventEmitter<number>();
 
 	editMode: boolean = false;
 
@@ -23,5 +24,9 @@ export class EmployeeDetailComponent {
 
 	onSave() {
 		this.saveClicked.emit(this.employee);
+	}
+
+	onDelete() {
+		this.deleteClicked.emit(this.employee?.id);
 	}
 }

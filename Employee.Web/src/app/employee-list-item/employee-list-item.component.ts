@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EmployeeListItem } from '../employees/models/employee-list-item.type';
 
 @Component({
@@ -8,4 +8,9 @@ import { EmployeeListItem } from '../employees/models/employee-list-item.type';
 })
 export class EmployeeListItemComponent {
 	@Input() public employee?: EmployeeListItem;
+	@Output() deleteClicked = new EventEmitter<number>();
+
+	onDelete() {
+		this.deleteClicked.emit(this.employee?.id);
+	}
 }

@@ -7,10 +7,9 @@
             </ng-template>
         </span>
         <span class="icon">
-            <i class="far fa-trash-alt"></i>
+            <i class="far fa-trash-alt" (click)="onDelete()"></i>
         </span>
     </div> 
-    <!-- (ngSubmit)="onSubmit()"  -->
     <form ngForm [ngClass]="{'not-editable': !editMode}">
         <div class="basic-info">
             <div class="photo">1</div>

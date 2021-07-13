@@ -29,7 +29,7 @@ export class EmployeeService {
 		return this.http.post<EmployeeDetails>(EmployeeService.employeeUrl, employee);
 	}
 
-	public deleteEmployee(employeeId: string) {
-		return this.http.delete<EmployeeDetails>(EmployeeService.employeeUrl, { params: { employeeId } });
+	public deleteEmployee(employeeId: number) {
+		return this.http.delete<EmployeeDetails>(EmployeeService.employeeUrl, { params: { id: employeeId } });
 	}
 }

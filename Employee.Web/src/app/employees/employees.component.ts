@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
 import { EmployeeDetailComponent } from '../employee-detail/employee-detail.component';
 import { EmployeeService } from './employees.service';
 import { EmployeeDetails } from './models/employee-details.type';
@@ -28,8 +27,7 @@ export class EmployeesComponent implements OnInit {
 		this.detailComponent.toggleEditMode(false);
 
 		if (this.selectedItemId === id) {
-			this.selectedItemId = 0;
-			this.selectedEmployee = undefined;
+			this.clearEmployeeSelection();
 			return
 		} 
 		
@@ -57,6 +55,19 @@ export class EmployeesComponent implements OnInit {
 			this.items$ = this.employeeService.getEmployeeList();
 			this.selectedItemId = res.id;
 		});
+	}
+
+	delete(employeeId: number) {
+		this.employeeService.deleteEmployee(employeeId).subscribe(res => {
+			this.items$ = this.employeeService.getEmployeeList();
+			this.clearEmployeeSelection();
+		});
+	}
+
+	private clearEmployeeSelection()
+	{
+		this.selectedItemId = 0;
+		this.selectedEmployee = undefined;
 	}
 }
 
