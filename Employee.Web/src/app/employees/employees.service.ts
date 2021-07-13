@@ -34,6 +34,6 @@ export class EmployeeService {
 			return;
 		}
 
-		return this.http.delete<EmployeeDetails>(EmployeeService.employeeUrl, { params: { id: employeeId } });
+		return this.http.delete(EmployeeService.employeeUrl, { params: { id: employeeId } });
 	}
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ConfirmService } from '../confirm/confirm.service';
+import { ConfirmParams } from '../confirm/confirmParams';
 import { EmployeeDetailComponent } from '../employee-detail/employee-detail.component';
 import { EmployeeService } from './employees.service';
 import { EmployeeDetails } from './models/employee-details.type';
@@ -17,7 +19,10 @@ export class EmployeesComponent implements OnInit {
 	selectedItemId: number = 0;
 	selectedEmployee?: EmployeeDetails;
 
-	constructor(private readonly employeeService: EmployeeService) {}
+	constructor(
+		private readonly employeeService: EmployeeService,
+		private readonly confirmService: ConfirmService
+	) {}
 
 	ngOnInit(): void {
 		this.items$ = this.employeeService.getEmployeeList();
@@ -57,13 +62,21 @@ export class EmployeesComponent implements OnInit {
 		});
 	}
 
-	delete(employeeId: number) {
+	async delete(employeeId: number) {
+		let confirmResult = await this.confirmService.showDialog(
+			new ConfirmParams('Are you sure you want to delete?', 'Ok', 'Cancel')
+		)
+
+		if(!confirmResult) {
+			return
+		}
+
 		if(employeeId === 0) {
 			this.clearEmployeeSelection();
 			return
 		}
 
-		this.employeeService.deleteEmployee(employeeId)?.subscribe(res => {
+		this.employeeService.deleteEmployee(employeeId)?.subscribe(() => {
 			this.items$ = this.employeeService.getEmployeeList();
 			this.clearEmployeeSelection();
 		});
@@ -75,5 +88,3 @@ export class EmployeesComponent implements OnInit {
 		this.selectedEmployee = undefined;
 	}
 }
-
-
