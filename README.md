@@ -1,6 +1,6 @@
 # 👷‍♂️ Employee App 👷‍♂️
 
-Simple web app written in Angular 12.x, ASP.NET Core 3.1 Web Api, SQL Server LocalDB. <br/>
+Simple web app written in Angular 12.x, RxJS, ASP.NET Core 3.1 Web Api, SQL Server LocalDB. <br/>
 You can browse, add, update, delete employees.
 
 ## Prerequisites ✔️
