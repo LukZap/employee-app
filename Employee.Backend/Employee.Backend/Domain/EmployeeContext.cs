@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace Employee.Backend.Domain
 {
@@ -28,7 +29,8 @@ namespace Employee.Backend.Domain
                     Motto = "Hey, have you tried Surf?", 
                     Blog = "www.google.com", 
                     Hobbies = "Surfing", 
-                    Hometown = "Playa de las Americas, Tenerife"
+                    Hometown = "Playa de las Americas, Tenerife",
+                    Image = File.ReadAllBytes("TestImages/photo_4.jpg")
                 }
             );
             builder.Entity<Employee>().HasData(
@@ -40,9 +42,10 @@ namespace Employee.Backend.Domain
                     Motto = "Party never sleeps.",
                     Blog = "www.github.com",
                     Hobbies = "Partying",
-                    Hometown = "Santa Cruz, Tenerife"
+                    Hometown = "Santa Cruz, Tenerife",
+                    Image = File.ReadAllBytes("TestImages/photo_2.jpg")                    
                 }
-            );            
+            );;            
             builder.Entity<Employee>().HasData(
                 new Employee
                 {
@@ -52,7 +55,8 @@ namespace Employee.Backend.Domain
                     Motto = "Bigger. Better. Postman.",
                     Blog = "www.stackoverflow.com",
                     Hobbies = "Diving",
-                    Hometown = "El Medano, Tenerife"
+                    Hometown = "El Medano, Tenerife",
+                    Image = File.ReadAllBytes("TestImages/photo_1.jpg")
                 }
             );
             builder.Entity<Employee>().HasData(
@@ -64,7 +68,8 @@ namespace Employee.Backend.Domain
                     Motto = "Basketball, the freshmaker.",
                     Blog = "www.npm.com",
                     Hobbies = "Basketball",
-                    Hometown = "Puerto de la Cruz, Tenerife"
+                    Hometown = "Puerto de la Cruz, Tenerife",
+                    Image = File.ReadAllBytes("TestImages/photo_3.jpg")
                 }
             );
         }
