@@ -56,14 +56,14 @@ export class EmployeesComponent implements OnInit {
 		this.detailComponent.toggleEditMode(true);
 	}
 
-	save(employee: EmployeeDetails) {
+	onSave(employee: EmployeeDetails) {
 		this.employeeService.saveEmployeeDetails(employee).subscribe(res => {
 			this.items$ = this.employeeService.getEmployeeList();
 			this.selectedItemId = res.id;
 		});
 	}
 
-	async delete(employeeId: number) {
+	async onDelete(employeeId: number) {
 		let confirmResult = await this.confirmService.showDialog(
 			new ConfirmParams('Are you sure you want to delete?', 'Ok', 'Cancel')
 		)

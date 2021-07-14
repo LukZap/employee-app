@@ -47,6 +47,7 @@ export class EmployeeDetailComponent {
 		reader.onloadend = () => {
 			if(this.employee) {
 				this.employee.imageUrl = reader.result as string;
+				this.employee.file = image;
 			}
 		};
 		reader.readAsDataURL(image);

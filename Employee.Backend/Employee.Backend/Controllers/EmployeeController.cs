@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Employee.Backend.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace Employee.Backend.Controllers
 {
@@ -35,13 +36,13 @@ namespace Employee.Backend.Controllers
         }
 
         [HttpPost]
-        public EmployeeDetailsViewModel Add(EmployeeDetailsViewModel vm)
+        public EmployeeDetailsViewModel Add([FromForm] EmployeeDetailsViewModel vm)
         {
             return _employeeService.AddEmployee(vm);
         }
 
         [HttpPut]
-        public EmployeeDetailsViewModel Update(EmployeeDetailsViewModel vm)
+        public EmployeeDetailsViewModel Update([FromForm] EmployeeDetailsViewModel vm)
         {
             return _employeeService.UpdateEmployee(vm);
         }

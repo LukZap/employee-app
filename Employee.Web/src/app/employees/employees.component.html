@@ -12,15 +12,15 @@
                 [employee]="item" 
                 (click)="onSelect(item.id)"
                 [class.selected]="item.id === selectedItemId"
-                (deleteClicked)="delete($event)">
+                (deleteClicked)="onDelete($event)">
             </app-employee-list-item>
         </div>
     </div>
     <div class="detail">
         <app-employee-detail 
             [employee]="selectedEmployee" 
-            (saveClicked)="save($event)"
-            (deleteClicked)="delete($event)">
+            (saveClicked)="onSave($event)"
+            (deleteClicked)="onDelete($event)">
         </app-employee-detail>
     </div>
 </div>

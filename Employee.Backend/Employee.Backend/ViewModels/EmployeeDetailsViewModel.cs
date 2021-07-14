@@ -1,4 +1,4 @@
-using System;
+using Microsoft.AspNetCore.Http;
 
 namespace Employee.Backend
 {
@@ -12,5 +12,6 @@ namespace Employee.Backend
         public string Hometown { get; set; }
         public string Blog { get; set; }
         public string ImageUrl { get; set; }
+        public IFormFile File { get; set; }
     }
 }

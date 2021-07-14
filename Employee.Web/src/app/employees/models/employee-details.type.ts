@@ -7,4 +7,5 @@ export interface EmployeeDetails {
 	hometown: string;
 	blog: string;
 	imageUrl: string;
+	file?: File;
 }

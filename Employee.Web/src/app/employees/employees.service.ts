@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { EmployeeListItem } from './models/employee-list-item.type';
 import { EmployeeDetails } from './models/employee-details.type';
 import { environment } from 'src/environments/environment';
@@ -14,7 +15,11 @@ export class EmployeeService {
 	constructor(private readonly http: HttpClient) {}
 
 	public getEmployeeList(): Observable<EmployeeListItem[]> {
-		return this.http.get<EmployeeListItem[]>(EmployeeService.employeeUrl);
+		return this.http.get<EmployeeListItem[]>(EmployeeService.employeeUrl).pipe(
+			// hack to disable caching images in the employee list
+			// TODO: find better way
+			tap((e) => e.forEach((x) => (x.imageUrl = x.imageUrl + '?t=' + new Date().getTime())))
+		);
 	}
 
 	public getEmployeeDetails(employeeId: number): Observable<EmployeeDetails> {
@@ -23,10 +28,10 @@ export class EmployeeService {
 
 	public saveEmployeeDetails(employee: EmployeeDetails): Observable<EmployeeDetails> {
 		if (employee.id !== 0) {
-			return this.http.put<EmployeeDetails>(EmployeeService.employeeUrl, employee);
+			return this.http.put<EmployeeDetails>(EmployeeService.employeeUrl, this._createFormData(employee));
 		}
 
-		return this.http.post<EmployeeDetails>(EmployeeService.employeeUrl, employee);
+		return this.http.post<EmployeeDetails>(EmployeeService.employeeUrl, this._createFormData(employee));
 	}
 
 	public deleteEmployee(employeeId: number) {
@@ -35,5 +40,14 @@ export class EmployeeService {
 		}
 
 		return this.http.delete(EmployeeService.employeeUrl, { params: { id: employeeId } });
+	}
+
+	private _createFormData(obj: any): FormData {
+		let formData = new FormData();
+
+		for (let key in obj) {
+			formData.append(key, obj[key]);
+		}
+		return formData;
 	}
 }

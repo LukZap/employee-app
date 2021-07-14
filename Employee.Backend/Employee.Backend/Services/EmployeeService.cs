@@ -2,6 +2,9 @@
 using FluentValidation;
 using System.Collections.Generic;
 using Employee.Backend.Repositories;
+using System;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Employee.Backend.Services
 {
@@ -45,10 +48,18 @@ namespace Employee.Backend.Services
 
         public EmployeeDetailsViewModel AddEmployee(EmployeeDetailsViewModel viewModel)
         {
-            //_validator.Validate(viewModel);
             var employee = _mapper.Map<Employee>(viewModel);
+
+            if (viewModel.File != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    viewModel.File.CopyTo(ms);
+                    employee.Image = ms.ToArray();
+                }
+            }
             _employeeRepository.Add(employee);
-                       
+            
             return _mapper.Map<EmployeeDetailsViewModel>(employee);
         }
 
@@ -56,6 +67,16 @@ namespace Employee.Backend.Services
         {
             var employee = _employeeRepository.Get(viewModel.Id);
             _mapper.Map(viewModel, employee);
+
+            if (viewModel.File != null) 
+            {
+                using (var ms = new MemoryStream())
+                {
+                    viewModel.File.CopyTo(ms);
+                    employee.Image = ms.ToArray();
+                }
+            }
+
             _employeeRepository.Update(employee);
 
             return _mapper.Map<EmployeeDetailsViewModel>(employee);
