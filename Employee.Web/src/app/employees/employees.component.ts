@@ -60,6 +60,7 @@ export class EmployeesComponent implements OnInit {
 		this.employeeService.saveEmployeeDetails(employee).subscribe(res => {
 			this.items$ = this.employeeService.getEmployeeList();
 			this.selectedItemId = res.id;
+			this.selectedEmployee = res;
 		});
 	}
 

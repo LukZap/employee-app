@@ -18,7 +18,7 @@ namespace Employee.Backend.Mappings
                 }
             }
 
-            return arr;
+            return arr ?? dest.Image;
         }
     }
 }

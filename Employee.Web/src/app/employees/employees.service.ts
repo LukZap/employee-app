@@ -46,7 +46,9 @@ export class EmployeeService {
 		let formData = new FormData();
 
 		for (let key in obj) {
-			formData.append(key, obj[key]);
+			if (obj[key] !== null && obj[key] !== undefined) {
+				formData.append(key, obj[key]);
+			}
 		}
 		return formData;
 	}
