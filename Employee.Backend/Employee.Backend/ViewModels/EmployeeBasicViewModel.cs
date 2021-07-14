@@ -1,5 +1,3 @@
-using System;
-
 namespace Employee.Backend
 {
     public class EmployeeBasicViewModel

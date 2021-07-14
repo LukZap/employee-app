@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Employee.Backend.Services;
-using Microsoft.AspNetCore.Http;
 
 namespace Employee.Backend.Controllers
 {
