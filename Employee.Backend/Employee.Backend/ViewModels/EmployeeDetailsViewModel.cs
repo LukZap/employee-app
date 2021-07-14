@@ -11,5 +11,6 @@ namespace Employee.Backend
         public string Hobbies { get; set; }
         public string Hometown { get; set; }
         public string Blog { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

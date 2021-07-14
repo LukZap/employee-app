@@ -13,7 +13,7 @@
     <form ngForm [ngClass]="{'not-editable': !editMode}" autocomplete="off">
         <div class="basic-info">
             <div class="photo">
-                <label class="file-upload" [ngStyle]="{'background-image': 'url(' + imgUrl + ')'}">
+                <label class="file-upload" [ngStyle]="{'background-image': 'url(' + employee.imageUrl + ')'}">
                     <input #imageInput
                         type="file"
                         accept="image/*"

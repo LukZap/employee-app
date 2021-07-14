@@ -6,4 +6,5 @@ export interface EmployeeDetails {
 	hobbies: string;
 	hometown: string;
 	blog: string;
+	imageUrl: string;
 }

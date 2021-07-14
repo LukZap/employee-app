@@ -12,7 +12,6 @@ export class EmployeeDetailComponent {
 	@Output() saveClicked = new EventEmitter<EmployeeDetails>();
 	@Output() deleteClicked = new EventEmitter<number>();
 
-	imgUrl: string = '';
 	editMode: boolean = false;
 
 	public toggleEditMode(activate?: boolean) {
@@ -46,7 +45,9 @@ export class EmployeeDetailComponent {
 		
 		const reader = new FileReader();
 		reader.onloadend = () => {
-			this.imgUrl = reader.result as string;
+			if(this.employee) {
+				this.employee.imageUrl = reader.result as string;
+			}
 		};
 		reader.readAsDataURL(image);
 	}

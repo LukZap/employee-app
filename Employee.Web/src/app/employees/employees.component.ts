@@ -50,7 +50,8 @@ export class EmployeesComponent implements OnInit {
 			hometown: '',
 			motto: '',
 			name: '',
-			job: ''
+			job: '',
+			imageUrl: ''
 		}
 		this.detailComponent.toggleEditMode(true);
 	}

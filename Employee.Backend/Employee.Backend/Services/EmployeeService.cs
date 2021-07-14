@@ -37,6 +37,12 @@ namespace Employee.Backend.Services
             return vm;
         }
 
+        public byte[] GetEmployeePhoto(long id)
+        {
+            var employee = _employeeRepository.Get(id);
+            return employee.Image;
+        }
+
         public EmployeeDetailsViewModel AddEmployee(EmployeeDetailsViewModel viewModel)
         {
             //_validator.Validate(viewModel);

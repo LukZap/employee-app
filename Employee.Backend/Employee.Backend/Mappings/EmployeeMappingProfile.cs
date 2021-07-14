@@ -6,9 +6,11 @@ namespace Employee.Backend.Mappings
     {
         public EmployeeMappingProfile()
         {
-            CreateMap<Employee, EmployeeBasicViewModel>();
+            CreateMap<Employee, EmployeeBasicViewModel>()
+                .ForMember(x => x.ImageUrl, o => o.MapFrom(x => $"https://localhost:5001/employee/photo/{x.Id}"));
             CreateMap<EmployeeBasicViewModel, Employee>();
-            CreateMap<Employee, EmployeeDetailsViewModel>();
+            CreateMap<Employee, EmployeeDetailsViewModel>()
+                .ForMember(x => x.ImageUrl, o => o.MapFrom(x => $"https://localhost:5001/employee/photo/{x.Id}"));
             CreateMap<EmployeeDetailsViewModel, Employee>();
         }
     }

@@ -27,6 +27,13 @@ namespace Employee.Backend.Controllers
             return _employeeService.GetEmployee(id);
         }
 
+        [HttpGet("photo/{id}")]
+        public FileResult GetEmployeePhoto(long id)
+        {
+            var image = _employeeService.GetEmployeePhoto(id);
+            return File(image, "image/jpeg");
+        }
+
         [HttpPost]
         public EmployeeDetailsViewModel Add(EmployeeDetailsViewModel vm)
         {
