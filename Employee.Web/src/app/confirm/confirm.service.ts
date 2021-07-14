@@ -10,7 +10,10 @@ export class ConfirmService {
 	private confirmedSubject: Subject<boolean> = new AsyncSubject<boolean>();
 	private showSubject: Subject<boolean> = new Subject<boolean>();
 
+	// observable to subscribe for container component
 	public show$: Observable<boolean>;
+
+	// observable to subscribe for confirm popup component
 	public params$: Observable<ConfirmParams>;
 
 	constructor() {
@@ -18,6 +21,7 @@ export class ConfirmService {
 		this.show$ = this.showSubject.asObservable();
 	}
 
+	// method to call by component that needs confirmation functionality
 	showDialog(params: ConfirmParams): Promise<boolean> {
 		this.showSubject.next(true);
 		this.paramsSubject.next(params);

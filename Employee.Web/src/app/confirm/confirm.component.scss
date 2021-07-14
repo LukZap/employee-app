@@ -1,3 +1,4 @@
+@import '_mixins';
 @import '_colors';
 
 .overlay {
@@ -14,7 +15,7 @@
 }
 
 .dialog {
-	height: 200px;
+	height: rem(200);
 	background-color: $white;
 	position: relative;
 	display: flex;

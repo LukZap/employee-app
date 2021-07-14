@@ -100,8 +100,8 @@ h2 {
 
 .file-upload {
 	display: block;
-	width: 150px;
-	height: 150px;
+	width: rem(150);
+	height: rem(150);
 	background-color: $background-gray;
 	border-radius: 500px;
 	border: 3px solid $primary-green;
