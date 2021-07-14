@@ -40,13 +40,17 @@ namespace Employee.Backend
                     Configuration.GetConnectionString("EmployeeDatabase")));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EmployeeContext employeeContext)
         {
             app.UseCors();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // TODO: delete later
+                employeeContext.Database.Migrate();
+                // employeeContext.Database.EnsureCreated();
             }
 
             app.UseHttpsRedirection();
