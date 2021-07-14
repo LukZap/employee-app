@@ -53,6 +53,10 @@ h2 {
 }
 
 .not-editable {
+	.file-upload {
+		pointer-events: none;
+	}
+
 	input {
 		background-color: $white;
 		border-color: $white;
@@ -87,6 +91,49 @@ h2 {
 
 .basic-info input {
 	width: 100%;
+}
+
+.photo {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.file-upload {
+	display: block;
+	width: 150px;
+	height: 150px;
+	background-color: $background-gray;
+	border-radius: 500px;
+	border: 3px solid $primary-green;
+	background-size: cover;
+	background-position: 50%;
+	cursor: pointer;
+	position: relative;
+
+	.icon {
+		display: none;
+		font-size: rem(30);
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 100%;
+		border-radius: 500px;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: $overlay-background;
+	}
+
+	&:hover {
+		.icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	input[type="file"] {
+		display: none;
+	}
 }
 
 .name {

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ACCEPTED_FILE_TYPES } from '../consts/consts';
 import { EmployeeDetails } from '../employees/models/employee-details.type';
 
 @Component({
@@ -11,6 +12,7 @@ export class EmployeeDetailComponent {
 	@Output() saveClicked = new EventEmitter<EmployeeDetails>();
 	@Output() deleteClicked = new EventEmitter<number>();
 
+	imgUrl: string = '';
 	editMode: boolean = false;
 
 	public toggleEditMode(activate?: boolean) {
@@ -28,5 +30,24 @@ export class EmployeeDetailComponent {
 
 	onDelete() {
 		this.deleteClicked.emit(this.employee?.id);
+	}
+
+	uploadFile(fileInput: HTMLInputElement) {
+		let files = fileInput.files 
+
+		if(!files || files.length === 0) {
+			return
+		}
+		
+		const image = files[0];
+		if(!ACCEPTED_FILE_TYPES.includes(image.type)) {
+			return
+		}
+		
+		const reader = new FileReader();
+		reader.onloadend = () => {
+			this.imgUrl = reader.result as string;
+		};
+		reader.readAsDataURL(image);
 	}
 }
