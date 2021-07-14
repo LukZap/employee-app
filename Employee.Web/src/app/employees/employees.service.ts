@@ -29,12 +29,28 @@ export class EmployeeService {
 	}
 
 	public getEmployeeDetails(employeeId: number): Observable<EmployeeDetails> {
-		return this.http.get<EmployeeDetails>(`${EmployeeService.employeeUrl}/${employeeId}`);
+		return this.http.get<EmployeeDetails>(`${EmployeeService.employeeUrl}/${employeeId}`).pipe(
+			// hack to disable caching images in the employee list
+			// TODO: find better way
+			tap((e) => {
+				if (e.imageUrl) {
+					e.imageUrl = e.imageUrl + '?t=' + new Date().getTime();
+				}
+			})
+		);
 	}
 
 	public saveEmployeeDetails(employee: EmployeeDetails): Observable<EmployeeDetails> {
 		if (employee.id !== 0) {
-			return this.http.put<EmployeeDetails>(EmployeeService.employeeUrl, this._createFormData(employee));
+			return this.http.put<EmployeeDetails>(EmployeeService.employeeUrl, this._createFormData(employee)).pipe(
+				// hack to disable caching images in the employee list
+				// TODO: find better way
+				tap((e) => {
+					if (e.imageUrl) {
+						e.imageUrl = e.imageUrl + '?t=' + new Date().getTime();
+					}
+				})
+			);
 		}
 
 		return this.http.post<EmployeeDetails>(EmployeeService.employeeUrl, this._createFormData(employee));
