@@ -18,7 +18,13 @@ export class EmployeeService {
 		return this.http.get<EmployeeListItem[]>(EmployeeService.employeeUrl).pipe(
 			// hack to disable caching images in the employee list
 			// TODO: find better way
-			tap((e) => e.forEach((x) => (x.imageUrl = x.imageUrl + '?t=' + new Date().getTime())))
+			tap((e) =>
+				e.forEach((x) => {
+					if (x.imageUrl) {
+						x.imageUrl = x.imageUrl + '?t=' + new Date().getTime();
+					}
+				})
+			)
 		);
 	}
 

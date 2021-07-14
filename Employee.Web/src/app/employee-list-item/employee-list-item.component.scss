@@ -20,11 +20,20 @@
 	padding-left: 20px;
 }
 
+.photo-container {
+	width: rem(60);
+	height: rem(60);
+	margin-right: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .photo {
 	width: rem(60);
 	height: rem(60);
 	border-radius: 500px;
-	margin-right: 10px;
+	// margin-right: 10px;
 }
 
 .info {
@@ -52,4 +61,10 @@
 
 .icon {
 	margin-left: rem(10);
+
+	&__not-found {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
